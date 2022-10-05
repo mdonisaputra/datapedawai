@@ -17,14 +17,14 @@ allData(){
 	}
 
 @Put(':id')
-    updateDetail(@Param('id') id:string, @Body() data: Partial<CreateDataPegawaiDto>){
-        return this.DatapegawaiService.update(id,data);
-    }
+updateDetail(@Param('id') id:string, @Body() data: Partial<CreateDataPegawaiDto>){
+    return this.DatapegawaiService.update(id,data);
+}
 
-    @Delete(':id')
-    menghapusData(@Param('id') id:string){
-        return this.DatapegawaiService.hapusData(id)
-    }    
+@Delete(':id')
+menghapusData(@Param('id') id:string){
+    return this.DatapegawaiService.hapusData(id)
+}    
     
 
 }

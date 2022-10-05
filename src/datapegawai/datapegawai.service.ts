@@ -8,7 +8,7 @@ import { CreateDataPegawaiDto} from './datapegawai.dto'
 @Injectable()
 export class DataPegawaiService {
     constructor(
-        @InjectRepository (DataPegawai)
+        @InjectRepository (DataPegawai) // ngambilentity
         private DatapegawaiRepository: Repository<DataPegawai>
     ) {}
 
@@ -18,20 +18,17 @@ export class DataPegawaiService {
 
     async create(data: DataPegawai){
         const datapegawaiNew = await this.DatapegawaiRepository.create(data);
-    await this.DatapegawaiRepository.save(datapegawaiNew)
-    return datapegawaiNew
-     }
+        await this.DatapegawaiRepository.save(datapegawaiNew)
+        return datapegawaiNew
+    }
 
-     async update(id, data: Partial<CreateDataPegawaiDto>){
+    async update(id, data: Partial<CreateDataPegawaiDto>){
         await this.DatapegawaiRepository.update({id}, data); 
         return await this.DatapegawaiRepository.findOne({where:{id}}) 
+    }
 
-}
-
-async hapusData(id){
-    await this.DatapegawaiRepository.delete({id})
-    return {deleted:true} //delete true: menampilkan notif berhasil dihapus
-}
-
- 
+    async hapusData(id){
+        await this.DatapegawaiRepository.delete({id})
+        return {deleted:true} //delete true: menampilkan notif berhasil dihapus
+    }
 }
